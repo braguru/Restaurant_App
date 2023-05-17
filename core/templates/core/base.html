@@ -1,12 +1,91 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'core/base.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    {% block onload_js%}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/js/bootstrap.min.js" integrity="sha512-wOLiP6uL5tNrV1FiutKtAyQGGJ1CWAsqQ6Kp2XZ12/CvZxw8MvNJfdhh0yTwjPIir4SWag2/MHrseR7PRmNtvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% endblock %}
+    
+    {% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha3/css/bootstrap.min.css" integrity="sha512-iGjGmwIm1UHNaSuwiNFfB3+HpzT/YLJMiYPKzlQEVpT6FWi5rfpbyrBuTPseScOCWBkRtsrRIbrTzJpQ02IaLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% endblock %}
+
+    <title>{% block title%}{%endblock%} Home </title>
 </head>
 <body>
+    <!-- Nav Icon and menu list -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i>Restaurant</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ingredients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">Recipe</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">Purchase</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">Log</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">Log In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">Log Out</a>
+              </li>
+              
+            </ul>
+            <!-- Nav search bar -->
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        {% block content %}
+        {% endblock%}
+      </main>
+
+      <footer>
+        <a  class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
+            <i class="fa-brands fa-github fa-2xl" style="color: #000000" alt="github icon"></i>
+        </a>
+        <a class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
+            <i class="fa-brands fa-facebook fa-2xl" alt="facebook icon" ></i>
+        </a>
+        <a class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
+            <i class="fa-brands fa-youtube fa-2xl" style="color: #ff0000;" alt="youtube icon"></i>
+        </a>
+
+        <a class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
+            <i class="fa-brands fa-twitter fa-2xl" style="color: #3867b7;" alt="twitter icon" ></i>
+        </a>
+       
+      </footer>
     
 </body>
 </html>
