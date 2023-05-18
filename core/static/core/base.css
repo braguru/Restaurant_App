@@ -21,6 +21,10 @@ body{
     font-family: var(--font2);
 }
 
+h1{
+    font-family: var(--font3);
+}
+
 .navbar-brand{
     font-family: var(--font1);
     box-shadow: var(--small-box-shadow);
@@ -51,4 +55,8 @@ a.social-icon {
     height: 2rem;
     margin: 1rem;
     
+}
+
+.form-control{
+    max-width: 500px;
 }
