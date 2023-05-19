@@ -4,15 +4,18 @@ from django.db import models
 # Create your models here.
 
 class Menu_Items(models.Model):
-    title = models.CharField(max_length=255, unique=True)
-    price = models.FloatField(default=0.00)
+    Title = models.CharField(max_length=255, unique=True)
+    Price = models.FloatField(default=0.00)
     
     class Meta:
-        ordering = ('title',)
+        ordering = ('Title',)
         verbose_name_plural = 'Menu Items'
         
+    # def available(self):
+    #     return all(X.enough() for X in self.reciperequirement_set.all())
+        
     def __str__(self):
-       return self.title
+       return self.Title
    
    
 class Ingredient(models.Model):
@@ -37,6 +40,9 @@ class RecipeRequirement(models.Model):
     
     def __str__(self):
         return self.menu_item.__str__()
+    
+    # def enough(self):
+    #     return self.quantity <= self.ingredient.quantity
     
     
 class Purchase(models.Model):

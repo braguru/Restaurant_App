@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{%block title%} Menu {%endblock%}
+<link rel="stylesheet" href="{% static 'core/base.css' %}">
+
+{% block content%}
+
+<h1 class="text-center p-2 d-block">Menu</h1>
+<div class="div container d-flex flex-row flex-wrap justify-content-center">
+    {% for menu in menus %}
+    <a href="{% url 'menu_detail' menu.id %}" class="menu">
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ menu.Title}}</h5>
+                <h4 class="card-title">${{ menu.Price}}</h4>
+                <p class="card-text">Click to view recipe requirements</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+<div class="div container justify-content-center text-center p-5">
+    <a href="{% url 'add_menu'%}" ><button class="btn btn-primary mt-2">Add Menu Item</button></a>
+</div>
+{%endblock%}

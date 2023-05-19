@@ -22,6 +22,7 @@
 </head>
 <body>
     <!-- Nav Icon and menu list -->
+    {% with request.resolver_match.url_name as url_name %}
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i>Restaurant</a>
@@ -32,10 +33,10 @@
             <ul class="navbar-nav me-auto mb-2">
               {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Home</a>
+                <a class="nav-link {% if url_name == 'dashboard' %}active{% endif %}" aria-current="page" href="{% url 'dashboard' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Menu</a>
+                <a class="nav-link {% if url_name == 'menu' %}active{% endif %}" href="{% url 'menu' %}">Menu</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Ingredients</a>
@@ -50,22 +51,23 @@
                 <a class="nav-link" href="">Log</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                <a class="nav-link {% if url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Log Out</a>
               </li> 
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="">Log In</a>
+                <a class="nav-link {% if url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Log In</a>
               </li>
               {% endif %}
             </ul>
             <!-- Nav search bar -->
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" method="GET" >
+                <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" >
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
           </div>
         </div>
       </nav>
+      {% endwith %}
 
       <main>
         {% block content %}
@@ -74,19 +76,18 @@
 
       <footer>
         <a  class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
-            <i class="fa-brands fa-github fa-2xl" style="color: #000000" alt="github icon"></i>
+            <i class="fa-brands fa-github fa-beat fa-xl" style="color: #000000" alt="github icon"></i>
         </a>
         <a class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
-            <i class="fa-brands fa-facebook fa-2xl" alt="facebook icon" ></i>
+            <i class="fa-brands fa-facebook fa-beat fa-xl" alt="facebook icon" ></i>
         </a>
         <a class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
-            <i class="fa-brands fa-youtube fa-2xl" style="color: #ff0000;" alt="youtube icon"></i>
+            <i class="fa-brands fa-youtube fa-beat fa-xl" style="color: #ff0000;" alt="youtube icon"></i>
         </a>
 
         <a class="social-icon" href="" rel="noopener" aria-label="link opens in a new tab">
-            <i class="fa-brands fa-twitter fa-2xl" style="color: #3867b7;" alt="twitter icon" ></i>
+            <i class="fa-brands fa-twitter fa-beat fa-xl" style="color: #3867b7;" alt="twitter icon" ></i>
         </a>
-      </footer>
-    
+      </footer>  
 </body>
 </html>
