@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{%block title%} Recipes{%endblock%}
+
+{% block content%}
+<h1 class="text-center p-2 d-block">Purchase </h1>
+<div class="div container d-flex flex-row flex-wrap justify-content-center">
+    {% for purchase in purchases %}
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">{{ purchase.menu_item}}</h4>
+                <h5 class="card-title">Price: ${{ purchase.menu_item.Price}}</h5>
+                <h5 class="card-title">Time: {{ purchase.timestamp}}</h5>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="div container justify-content-center text-center p-5">
+    <a href="{% url 'add_purchase'%}"  class="btn btn-primary mt-2">Add New Purchase</a>
+</div>
+{%endblock%}

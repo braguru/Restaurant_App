@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Sum
 from .models import Menu_Items, RecipeRequirement, Ingredient, Purchase
-from .forms import Add_Menu_Form, RecipeRequirementForm, Add_Ingredient_form
+from .forms import Add_Menu_Form, RecipeRequirementForm, Add_Ingredient_form, Add_Purchase_form
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -130,3 +130,52 @@ class Edit_Ingredient(LoginRequiredMixin, UpdateView):
     form_class = Add_Ingredient_form  
     success_url = '/ingredient/' 
     context_object_name = 'ingredients' 
+    
+
+class Purchase_View(ListView):
+    template_name = 'core/purchase.html'
+    model = Purchase 
+    context_object_name = 'purchases'
+    
+    def get_queryset(self, **kwargs):
+        query = self.request.GET.get('q')
+        if query:
+            purchase = self.model.objects.filter(
+                Q(menu_item__icontains=query) |
+                Q(timestamp__icontains=query) 
+            )
+        else:
+            return self.model.objects.all()
+        return purchase
+    
+    
+class Add_Purchase(LoginRequiredMixin, CreateView):
+    template_name = 'core/add_purchase.html'
+    model = Purchase
+    context_object_name = 'purchases'
+    form_class = Add_Purchase_form
+    success_url = '/purchase/'
+    
+
+class Log(LoginRequiredMixin, ListView):
+    template_name = "core/log.html"
+    model = Purchase
+    context_object_name= 'logs'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["purchases"] = Purchase.objects.all()
+        revenue = Purchase.objects.aggregate(
+            revenue=Sum("menu_item__Price"))["revenue"]
+        total_cost = 0
+        for purchase in Purchase.objects.all():
+            for recipe_requirement in purchase.menu_item.reciperequirement_set.all():
+                total_cost += recipe_requirement.ingredient.price_per_unit * \
+                    recipe_requirement.quantity
+
+        context["revenue"] = revenue
+        context["total_cost"] = total_cost
+        context["profit"] = revenue - total_cost
+
+        return context
+    

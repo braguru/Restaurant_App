@@ -25,6 +25,10 @@ h1{
     font-family: var(--font3);
 }
 
+h2{
+    font-family: var(--font3);
+}
+
 .navbar-brand{
     font-family: var(--font1);
     box-shadow: var(--small-box-shadow);
@@ -128,6 +132,7 @@ a.container:hover{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 @media screen and (min-width:40em) {
     .form{

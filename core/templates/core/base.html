@@ -42,13 +42,10 @@
                 <a class="nav-link {% if url_name == 'ingredient' %}active{% endif %}" href="{% url 'ingredient' %}">Ingredients</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Recipe</a>
+                <a class="nav-link {% if url_name == 'purchase' %}active{% endif %}" href="{% url 'purchase' %}">Purchase</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Purchase</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="">Log</a>
+                <a class="nav-link {% if url_name == 'log' %}active{% endif %}" href="{% url 'log'%}">Log</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Log Out</a>

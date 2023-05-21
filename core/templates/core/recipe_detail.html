@@ -1,0 +1,22 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/base.css' %}">
+
+{%block title%}{{ recipe.menu_item }} Detail {%endblock%}
+
+{% block content%}
+<div class="div container">
+    <div class="menu-info mt-3 p-1">
+        <div class="menu-detail">
+            <h1 class="text-center">{{ recipe.menu_item }}</h1>
+            <h5  class="text-center"> Quantity: {{ recipe.ingredient }}</h5>
+            <h5  class="text-center"> Unit: {{ recipe.quantity }}</h5>
+        </div> 
+    </div>
+</div>
+<div class="div text-center">
+    <a href="" class="btn btn-primary w-25 mt-5">Edit</a>
+    <a href="" class="btn btn-primary w-25 mt-5">Delete</a>
+</div>
+{%endblock%}

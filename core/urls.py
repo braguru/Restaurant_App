@@ -3,7 +3,7 @@ from .views import (Index, add_menu, Menu,
                     Menu_Detail, Delete_Menu, Edit_Menu, 
                     Ingredient_View, Ingredient_Detail,
                     Add_Ingredient, Delete_Ingredient,
-                    Edit_Ingredient)
+                    Edit_Ingredient, Purchase_View, Add_Purchase, Log)
 from . import views
 
 urlpatterns = [
@@ -20,4 +20,7 @@ urlpatterns = [
     path('add_ingredient/', Add_Ingredient.as_view(), name="add_ingredient" ),
     path('delete_ingredient/<slug:pk>/', Delete_Ingredient.as_view(), name="delete_ingredient"),
     path('edit_ingredient/<slug:pk>/', Edit_Ingredient.as_view(), name="edit_ingredient"),
+    path('purchase/', Purchase_View.as_view(), name="purchase"),
+    path('add_purchase/', Add_Purchase.as_view(), name="add_purchase"),
+    path('log/', Log.as_view(), name="log" )
 ]

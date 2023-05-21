@@ -1,5 +1,5 @@
 from django import forms
-from .models import Menu_Items, RecipeRequirement, Ingredient
+from .models import Menu_Items, RecipeRequirement, Ingredient, Purchase
 
 class Add_Menu_Form(forms.ModelForm):
     class Meta:
@@ -39,3 +39,14 @@ class Add_Ingredient_form(forms.ModelForm):
         self.fields['unit'].widget.attrs['class'] = "form-control p-2 mb-3"
         self.fields['price_per_unit'].widget.attrs['class'] = "form-control p-2"
         
+
+class Add_Purchase_form(forms.ModelForm):
+    class Meta:
+        model = Purchase
+        fields = "__all__"
+        
+    def __init__(self, *args, **kwargs):
+        super(Add_Purchase_form, self).__init__(*args, **kwargs)
+        
+        self.fields['menu_item'].widget.attrs['class'] = "form-control p-2 mb-3"
+       

@@ -16,7 +16,6 @@
         <form method="POST" class="p-2 form">
             <h1 class="text-center"> Add Recipe </h1>
             {% csrf_token %}
-            <!-- {{form}} -->
             <div class="p-2 mb-3 div center">
                 {{form.as_p}}
             </div>
@@ -25,7 +24,7 @@
             </div>
         </form>
     </div>
-{% endblock %}
+    {% endblock %}
 </body>
 </html>
 
