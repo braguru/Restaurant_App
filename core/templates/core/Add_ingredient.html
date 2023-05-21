@@ -1,0 +1,18 @@
+{%extends 'core/base.html'%}
+
+{% block title %} Add Ingredient {%endblock%}
+
+{% block content %}
+<div class="container text-center">
+    <form method="POST" class="p-2 form">
+        {% csrf_token %}
+        <h1 class="text-center"> Add Ingredient</h1>
+        <div class="p-2 mb-3 div center">
+            {{form.as_p }}
+        </div>
+        <div class="div text-center">
+            <button type="submit" class="btn btn-primary mt-2 w-25"> Add </button>
+        </div>
+</form>
+</div>
+{% endblock %}

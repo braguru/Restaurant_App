@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{%block title%}Delete Ingredient{%endblock%}
+
+{% block content%}
+<div class="div container">
+    <h1 class="text-center mt-2">Confirm Ingredient Delete</h1>
+    <div class="div d-flex justify-content-center pt-3">
+        <form method="POST" class="text-center">
+            {%csrf_token%}
+            <p>Are you sure you want to delete {{object.title}}</p>
+            <input class="btn btn-primary w-30" type="submit" value="Confirm"/>
+        </form>
+    </div>
+</div>
+{%endblock%}

@@ -39,7 +39,7 @@
                 <a class="nav-link {% if url_name == 'menu' %}active{% endif %}" href="{% url 'menu' %}">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Ingredients</a>
+                <a class="nav-link {% if url_name == 'ingredient' %}active{% endif %}" href="{% url 'ingredient' %}">Ingredients</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">Recipe</a>

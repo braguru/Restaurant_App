@@ -11,8 +11,6 @@ class Menu_Items(models.Model):
         ordering = ('Title',)
         verbose_name_plural = 'Menu Items'
         
-    # def available(self):
-    #     return all(X.enough() for X in self.reciperequirement_set.all())
         
     def __str__(self):
        return self.Title
@@ -40,9 +38,6 @@ class RecipeRequirement(models.Model):
     
     def __str__(self):
         return self.menu_item.__str__()
-    
-    # def enough(self):
-    #     return self.quantity <= self.ingredient.quantity
     
     
 class Purchase(models.Model):

@@ -14,19 +14,14 @@
     {% block content%}
     <div class="container text-center">
         <form method="POST" class="p-2 form">
-            <h1 class="text-center"> Add Menu Item</h1>
+            <h1 class="text-center"> Add Recipe </h1>
             {% csrf_token %}
+            <!-- {{form}} -->
             <div class="p-2 mb-3 div center">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" >
-            </div>
-
-            <div class="p-2 mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="price" >
+                {{form.as_p}}
             </div>
             <div class="div text-center">
-                <button type="submit" class="btn btn-primary mt-2"> Add Menu</button>
+                <button type="submit" class="btn btn-primary mt-2"> Add </button>
             </div>
         </form>
     </div>

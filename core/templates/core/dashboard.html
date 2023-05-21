@@ -16,16 +16,25 @@
                 <h1 class="main-title mx-auto">Menu And Recipes</h1>
 
                 <p class="pt-4">
-                    Welcome! Notes
+                    Welcome to the one-stop recipe planning site! We believe that meals should be a stress-free and
+                    enjoyable experience for everyone. This platform is designed to host various and numerous recipes
+                    that you and edit. Its built for restaurants to help the workers know of the recipe plan and also
+                    track purchases log of the restaurant in a period.
+                    You can add meals, recipes, and ingredients on this site. This site also allows to enter purchases
+                    made and produces a purchase log with timestamps.
+                    Below are the lists of menus that have been added and can be edited or delete. Feel free to click for
+                    details, edit and delete as well. 
+                    The links at the top helps to add items and edit them as well.
                 </p>
             </section>
             <section>
                 <div class="menu-cont">
                     {% for home in homes %}
-                    <a href="" class="container"></a>
-                    <div class="div centered">
-                        <h2>{{menu.Title}}</h2>
-                    </div>
+                    <a href="{% url 'menu_detail' home.id %}" class="container p-4">
+                        <div class="div centered">
+                            <h2>{{home.Title}}</h2>
+                        </div>
+                    </a>
                     {% endfor %}
                 </div>
             </section>
